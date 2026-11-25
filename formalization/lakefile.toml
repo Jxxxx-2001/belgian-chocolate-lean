@@ -1,0 +1,601 @@
+name = "belgian_chocolate_formalization"
+version = "0.1.0"
+defaultTargets = ["MarkedBoundaryComparison", "FirstAnnulusMatrix", "FirstAnnulusEmbedding", "FirstAnnulusTransport", "FirstAnnulusStrip", "FirstAnnulusHomotopySupport", "FirstAnnulusPaths", "FirstAnnulusReferenceGates", "FirstAnnulusMonodromyLength", "FirstAnnulusOuterGates", "FirstAnnulusOuterAlgebra", "FirstAnnulusCoreWord", "FirstAnnulusCenterCore", "SimplePreimageLoop", "FirstAnnulusMarkedNormalization", "SecondAnnulusMarking", "ModularLambdaCuspMonodromy", "UpperHalfDiskPuncture", "MarkedCompetitorLift", "ComparisonSourceChart", "ComparisonOuterArc", "DiskFeasibility", "ControllerDiskCompetitor", "SlitRadialDomain", "SlitSquareRootBoundary", "MarkedAxisSlitBoundaryLimit", "SlitArcSquareRoot", "MarkedCompetitorComparison", "ControllerAnalyticUnits", "ControllerDiskApproximation", "MarkedBoundaryObstruction", "BelgianChocolateThreshold", "CandidateNormalizedChart", "SlitMassChartIndependence", "SlitMassPositivity", "SlitBoundaryMean", "CandidateBalancedUniqueness"]
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "1b1ccf4b088b32fa3f23f2de1127433254a81e1e"
+
+[[require]]
+name = "TauCeti"
+git = "https://github.com/TauCetiProject/TauCeti.git"
+rev = "ed6c0aa3acc0a3cb56901dc406167cdbad593f59"
+
+[[lean_lib]]
+name = "HarmonicRadialBound"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "HarmonicComparison"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "MarkedRealAxisSlice"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "HarmonicTrace"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "HarmonicBoundaryBarrier"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "HarmonicBoundaryComparison"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ComparisonCayley"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ComparisonGraph"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "MarkedBoundaryComparison"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "AnnulusLengthArithmetic"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusEmbedding"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusTransport"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusStrip"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusMatrix"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusHomotopySupport"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ModularLambdaRatio"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusPaths"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusReferenceGates"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusMonodromyLength"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusOuterGates"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusOuterAlgebra"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusCoreWord"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ModularLambdaJ"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ModularLambdaCovering"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusCenterCore"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ModularLambdaCuspPath"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SimplePreimageLoop"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "TranslatedCircleHomotopy"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusMarkedCircleHomotopy"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusModularGenerators"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ModularLambdaCuspLabels"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusMarkedImage"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "FirstAnnulusMarkedNormalization"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ModularLambdaCuspCover"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ModularLambdaCuspMarked"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ModularLambdaCuspMonodromy"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ModularLambdaDeckReflection"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ModularLambdaReflection"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusCentralizer"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusCoreComparison"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusCoreLength"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusEmbedding"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusLambdaTrace"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusMarkedReflection"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusMarking"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusMatrix"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusReference"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusReflection"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusSigns"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusTripleWord"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SecondAnnulusWordLength"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SourceDiskCompetitor"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SourceDiskPaths"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SourceDiskR17Normalization"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SourceDiskRealNormalization"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SourceDiskReflection"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UpperHalfDiskPuncture"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ComparisonOuterArc"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ComparisonSourceBoundary"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ComparisonSourceChart"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerArithmetic"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerCayley"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerDiskCompetitor"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerDiskFactors"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerDiskMap"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerFeasible"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerSchur"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerWitness"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerWitnessData"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerWitnessX"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerWitnessY"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerWitnessZ"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CoveringBoundaryLimit"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CuspLiftFilling"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "DiskFeasibility"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "MarkedAxisContinuation"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "MarkedAxisLift"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "MarkedAxisSlit"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "MarkedAxisSlitBoundaryLimit"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "MarkedAxisSlitLift"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "MarkedCompetitorLift"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitBoundaryGeometry"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitRadialDomain"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitSquareRoot"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitSquareRootBoundary"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitStarConvex"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UpperHalfDiskCuspLift"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerAnalyticUnits"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerDiskApproximation"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerDiskRealization"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerRemovableFactors"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "MarkedBoundaryObstruction"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "MarkedCompetitorComparison"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitArcSquareRoot"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "BalancedParameters"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "BalancedSlitRoot"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "BelgianChocolateThreshold"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateBoundaryValues"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateCuspCoordinate"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateDiskExtension"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateFromChart"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateJoukowskiAssembly"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateModularBoundary"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateNormalizedChart"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateReflection"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateSimpleZero"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateSlitRealization"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateUpperHalfDisk"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerBoundaryRegular"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerCandidateThreshold"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ControllerStrictRealization"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CuspSectorSign"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "JoukowskiBoundary"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "JoukowskiHalfDisk"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitArcIndicator"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitBankOrientation"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitBarrierMean"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitBoundaryMean"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitHarmonicMeasure"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitLeftBalanceBarrier"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitMassChartIndependence"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitMassPositivity"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitRightBalanceBarrier"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UnfoldedSlitArcs"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UnfoldedSlitChart"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UnfoldedSlitChartRotation"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UnfoldedSlitDomain"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UnfoldedSlitJordan"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UnfoldedSlitMarking"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UnfoldedSlitNormalization"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UnfoldedSlitPhysicalSides"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UnfoldedSlitPrimeEnds"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UnfoldedSlitSides"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "UnfoldedSlitSourceContinuity"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "BelgianChocolateThresholdAudit"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateBalancedChart"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "CandidateBalancedUniqueness"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitBalanceVariation"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitCayleyAngles"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitChartTransition"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitHalfPlaneDiskChart"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitMassContinuity"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitMassTransfer"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitOuterVariation"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitPhysicalIndicator"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitPrevertexMasses"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SlitParameterRegularity"
+leanOptions = { warningAsError = true }
