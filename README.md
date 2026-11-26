@@ -18,7 +18,7 @@ This repository accompanies the manuscript and contains the Lean 4 formalization
 
 In the polynomial formulation of Blondel's simultaneous stabilization problem, fix 0 &lt; δ &lt; 1. Seek nonzero real polynomials x, y with deg y ≤ deg x such that x, y, and
 
-Z(s) = (s² − 2δs + 1)x(s) + (s² − 1)y(s)
+<p align="center">Z(s) = (s² − 2δs + 1)x(s) + (s² − 1)y(s)</p>
 
 are strictly Hurwitz stable, meaning that each zero has strictly negative real part. The finite-order controller is y/x. [Lean definition](formalization/ControllerFeasible.lean#L11)
 
@@ -35,7 +35,11 @@ The numerical approximation δ<sub>∗</sub> ≈ 0.987237027 comes from Muhan Li
 ## Research background
 
 - **1994.** Vincent Blondel posed the problem in the study of simultaneous stabilization. The polynomial formulation asks when a stable, minimum-phase rational controller can stabilize a particular second-order plant. [Blondel’s monograph, pp. 149–150](https://link.springer.com/book/10.1007/3-540-19862-8)
+- **2008.** Guannan He, Long Wang, and Wensheng Yu used automated inequality proving to obtain explicit parameter bounds for fixed-order stabilizing controllers and formulated two conjectures for the Belgian Chocolate Problem. [IFAC paper](https://doi.org/10.3182/20080706-5-KR-1001.00191)
+- **2011.** Qiang Guan, Guannan He, Long Wang, and Wensheng Yu reviewed the Belgian Chocolate Problem from the perspectives of theoretical bounds and controller design. Section 5 describes how a single threshold separates feasible and infeasible parameters. [*Control Theory & Applications* 28(1), 1–12](https://www.oalib.com/journal/3455/11)
 - **2013.** Walter Bergweiler and Alexandre Eremenko formulated the associated holomorphic interpolation problem on the unit disk and proved the upper bound δ<sub>∗</sub> &lt; 0.999579. [*Gol’dberg’s Constants*, §11](https://www.math.purdue.edu/~eremenko/dvi/goldbergconst.pdf)
+- **2014.** Wang Li and Wensheng Yu used elliptic modular functions and lengths of hyperbolic closed geodesics to refine a parameter estimate based on the Hempel–Smith bound. [CCDC paper](https://doi.org/10.1109/CCDC.2014.6852192)
+- **2016.** Wang Li, Long Wang, and Wensheng Yu surveyed analytical and numerical bounds for the Belgian Chocolate Problem, including bounds for fixed controller orders. [*Journal of Systems Science & Complexity* 29(2), 289–299](https://doi.org/10.1007/s11424-015-4182-1)
 - **2018.** Zachary Charles and Nigel Boston proved that δ = 0.9808348 is feasible using the algebraic structure of the stabilization equations. [Charles and Boston, Theorem 5.1](https://arxiv.org/abs/1708.08114)
 - **2026.** Xuandi Cheng gave an exact polynomial certificate for feasibility at δ = 0.9846316110433085. Muhan Liu derived the same exact threshold as the accompanying manuscript using a modular covering and a Cauchy integral argument. [Cheng’s certificate](https://github.com/chengxuandi/belgian-chocolate-certified-lower-bound/tree/362cf25a04ebd0468b05153008ba72dca7f09ef6) · [Liu’s preprint](https://www.alphaxiv.org/abs/2611.generalized-belgian-chocolate-stabilization.pdf)
 

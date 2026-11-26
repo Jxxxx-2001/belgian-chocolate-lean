@@ -18,7 +18,7 @@
 
 在 Blondel 同时镇定问题的多项式表述中，给定 0 &lt; δ &lt; 1，寻找非零实多项式 x, y，使 deg y ≤ deg x，且 x、y 和
 
-Z(s) = (s² − 2δs + 1)x(s) + (s² − 1)y(s)
+<p align="center">Z(s) = (s² − 2δs + 1)x(s) + (s² − 1)y(s)</p>
 
 均严格 Hurwitz 稳定，即各自的所有零点都具有严格负的实部。有限阶控制器为 y/x。 [Lean 定义](formalization/ControllerFeasible.lean#L11)
 
@@ -35,7 +35,11 @@ Z(s) = (s² − 2δs + 1)x(s) + (s² − 1)y(s)
 ## 研究背景
 
 - **1994 年。** Vincent Blondel 在同时镇定研究中提出了这一问题。其多项式表述考察何时可用稳定且为最小相位的有理控制器镇定一个特定的二阶被控对象。 [Blondel 专著，第 149–150 页](https://link.springer.com/book/10.1007/3-540-19862-8)
+- **2008 年。** 何冠男、王龙和郁文生利用不等式型定理机器证明，给出固定阶镇定控制器存在的显式参数界，并提出关于比利时巧克力问题的两个猜想。 [IFAC 会议论文](https://doi.org/10.3182/20080706-5-KR-1001.00191)
+- **2011 年。** 关强、何冠男、王龙和郁文生从理论界与控制器设计两方面综述了比利时巧克力问题。第 5 节说明了可行区间与不可行区间由同一个阈值划分。 [《控制理论与应用》28(1)，1–12](https://www.oalib.com/journal/3455/11)
 - **2013 年。** Walter Bergweiler 与 Alexandre Eremenko 给出了相应的单位圆盘全纯插值问题，并证明阈值上界 δ<sub>∗</sub> &lt; 0.999579。 [*Gol’dberg’s Constants*，第 11 节](https://www.math.purdue.edu/~eremenko/dvi/goldbergconst.pdf)
+- **2014 年。** Wang Li 和郁文生利用椭圆模函数与双曲闭测地线长度，细化了基于 Hempel–Smith 界的参数估计。 [中国控制与决策会议论文](https://doi.org/10.1109/CCDC.2014.6852192)
+- **2016 年。** Wang Li、王龙和郁文生梳理了比利时巧克力问题的理论界和数值界，其中包括固定控制器阶数下的参数界。 [*Journal of Systems Science & Complexity* 29(2)，289–299](https://doi.org/10.1007/s11424-015-4182-1)
 - **2018 年。** Zachary Charles 与 Nigel Boston 利用镇定方程的代数结构，证明 δ = 0.9808348 可行。 [Charles 与 Boston，定理 5.1](https://arxiv.org/abs/1708.08114)
 - **2026 年。** 程煊笛给出了 δ = 0.9846316110433085 可行的精确多项式证书。Muhan Liu 利用模覆盖和 Cauchy 积分得到了与本仓库配套论文相同的精确阈值。 [程煊笛的证书](https://github.com/chengxuandi/belgian-chocolate-certified-lower-bound/tree/362cf25a04ebd0468b05153008ba72dca7f09ef6) · [Liu 的预印本](https://www.alphaxiv.org/abs/2611.generalized-belgian-chocolate-stabilization.pdf)
 
