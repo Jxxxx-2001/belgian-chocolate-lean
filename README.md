@@ -1,6 +1,9 @@
 # The Exact Stabilizability Threshold for the Belgian Chocolate Problem
 
-**Xiang Ji and Wensheng Yu** · School of Electronic Engineering, Beijing University of Posts and Telecommunications
+**Xiang Ji**, **Long Wang**, and **Wensheng Yu**
+
+Xiang Ji and Wensheng Yu · School of Electronic Engineering, Beijing University of Posts and Telecommunications  
+Long Wang · Center for Systems and Control, College of Engineering, Peking University
 
 English · [中文](README.zh-CN.md)
 
@@ -8,9 +11,9 @@ Project affiliation: Intelligent Information Processing Laboratory, Beijing Univ
 
 **Initial Lean formalization commit: 2026-11-25 · [4006bec](https://github.com/Jxxxx-2001/belgian-chocolate-lean/commit/4006bec3e7f41c605a9bcd07d28d90fc4261b292).**
 
-**Content updated: 2026-11-26.**
+**Content updated: 2026-11-28.**
 
-This repository accompanies the manuscript and contains the Lean 4 formalization and the rational controller certificate.
+This repository accompanies the manuscript and contains Lean 4 proofs of the exact threshold and the two fixed-degree results, together with a rational controller certificate.
 
 [Lean main theorem](formalization/BelgianChocolateThreshold.lean#L89) · [Axiom audit](formalization/BelgianChocolateThresholdAudit.lean) · [Reproduction instructions](formalization/REPRODUCE.md)
 
@@ -29,6 +32,10 @@ are strictly Hurwitz stable, meaning that each zero has strictly negative real p
 | Finite-order stabilization | The feasible parameters are exactly (0, δ<sub>∗</sub>). The supremum δ<sub>∗</sub> is unattained. | [Interval and endpoint](formalization/BelgianChocolateThreshold.lean#L38) |
 | Disk interpolation | The feasible parameters are exactly [t<sub>∗</sub>, 1). At t = t<sub>∗</sub> there are exactly two interpolants, f<sub>∗</sub>(z) and f<sub>∗</sub>(−z), with f<sub>∗</sub>′(0) &gt; 0. | [Interval and endpoint classification](formalization/MarkedCompetitorComparison.lean#L236) |
 | Exact threshold formula | Let d<sub>∗</sub> be the harmonic measure at 0 of the lower unit semicircle in the unique balanced slit domain. Then t<sub>∗</sub> = tan(πd<sub>∗</sub>/4) and δ<sub>∗</sub> = cos(πd<sub>∗</sub>/2) = (1 − t<sub>∗</sub>²)/(1 + t<sub>∗</sub>²). | [Balanced slit](formalization/BalancedSlitRoot.lean#L101) · [Exact formulas](formalization/BelgianChocolateThreshold.lean#L32) |
+| Example 6.1 — Sixth-order counterexample | With a degree-six denominator and a constant numerator, every feasible parameter is below √(11/12). With a degree-six numerator and denominator, some parameter above 0.96295 is feasible. | [Refutation](formalization/Conjecture2.lean#L377) · [Strict gap](formalization/Conjecture2.lean#L363) |
+| Theorem 6.2 — Sharpness of the continued-fraction bound | For a constant numerator and denominator degree n ≥ 1, let δ<sub>n</sub><sup>∗</sup> be the feasible supremum. Every feasible parameter is strictly below δ<sub>n</sub> = cos(π/[2(n + 1)]). The supremum equals this bound for n = 1, 2, 3, 4 and is strictly smaller for n ≥ 5. | [Continued-fraction bound](formalization/ContinuedFractionBound.lean#L73) · [Equality classification](formalization/Conjecture3Equality.lean#L8) |
+
+For δ in [0, 1], the manuscript also includes δ = 0, giving the feasible set [0, δ<sub>∗</sub>). A controller at zero is given by x(s) = s + 1 and y(s) = 1/2. The linked Lean threshold theorem uses positive parameters.
 
 The numerical approximation δ<sub>∗</sub> ≈ 0.987237027 comes from Muhan Liu's evaluation of the harmonic measure and balance equation (preprint, Section 6). [Liu's preprint](https://www.alphaxiv.org/abs/2611.generalized-belgian-chocolate-stabilization.pdf)
 
@@ -45,16 +52,22 @@ The numerical approximation δ<sub>∗</sub> ≈ 0.987237027 comes from Muhan Li
 
 ## Proof outline
 
-The proof constructs the extremal interpolant from the balanced slit. Two explicit annuli determine the boundary markings of the covering lifts of competing interpolants. Comparing harmonic primitives then gives the disk threshold and the endpoint classification. Below the finite-order threshold, polynomial approximation produces stabilizing controllers. At the threshold, the extremal interpolant's boundary behavior rules out a finite-order realization.
+**Exact threshold.** The Cayley transform reduces stabilization to disk interpolation. The unique balanced slit gives an extremal candidate, and two explicit annuli determine the boundary markings of the competing lifts. A comparison of harmonic primitives proves the disk threshold and endpoint classification. Polynomial approximation gives finite-order controllers below the threshold, and the extremal interpolant's boundary behavior excludes a finite-order controller at the threshold.
 
-A certified degree-28 rational controller gives feasibility at δ<sub>w</sub> = 98236947/10⁸. Its associated disk parameter satisfies t<sub>w</sub> &lt; 1/10. The comparison argument gives t<sub>∗</sub> ≤ t<sub>w</sub>, so the comparison applies to every positive parameter up to t<sub>∗</sub>. [Lean witness](formalization/ControllerFeasible.lean#L34) · [Independent Schur verification](verification/README.md)
+<p align="center"><img src="assets/balanced-slit.png" width="660" alt="The upper half-disk maps to a domain bounded by the curved arc C and the lower semicircle L, with a slit from −1 to α∗. The marked point it∗ maps to 0."></p>
+
+**Figure 1.** The two halves of the diameter and the upper semicircle correspond to C, the two slit banks, and L, respectively. At balance, C and the two banks have the same total harmonic measure at 0.
+
+A certified degree-28 rational controller gives feasibility at δ<sub>w</sub> = 98236947/10⁸. Its associated disk parameter satisfies t<sub>w</sub> &lt; 1/10. The comparison argument gives t<sub>∗</sub> ≤ t<sub>w</sub>, so it covers every positive parameter up to t<sub>∗</sub>. [Lean witness](formalization/ControllerFeasible.lean#L34) · [Independent Schur verification](verification/README.md)
+
+**Example 6.1.** A sign condition for the odd coefficients of a Hurwitz sextic excludes constant numerators at and above the stated bound. An algebraic identity and a Möbius transformation produce a strictly stable degree-six witness. [Lean witness construction](formalization/Degree6Witness.lean)
+
+**Theorem 6.2.** Chebyshev polynomials give the largest positive root of the continued fraction. At degrees one through four, explicit stable families approach the bound. At higher degrees, the limiting polynomial forces an extra right-half-plane root, ruling out approach to the bound. [Low-degree construction](formalization/LowDegreeSharpness.lean#L234) · [Higher-degree obstruction](formalization/HighDegreeGap.lean#L17)
 
 ## Lean 4 formalization
 
-The formalization uses Mathlib and Tau Ceti. The audited source snapshot ([`4006bec`](https://github.com/Jxxxx-2001/belgian-chocolate-lean/commit/4006bec3e7f41c605a9bcd07d28d90fc4261b292)) contains 147 Lean files and 19,330 source lines, excluding external dependencies.
-
-The main theorem, `BelgianChocolate.belgian_chocolate_threshold`, depends only on `propext`, `Classical.choice`, and `Quot.sound`. The axiom audit reports the same three dependencies for all 31 checked declarations. [Main theorem](formalization/BelgianChocolateThreshold.lean#L89) · [Axiom audit](formalization/BelgianChocolateThresholdAudit.lean)
+The project uses Mathlib and Tau Ceti and contains 160 Lean files with 21,726 source lines, excluding dependencies. The threshold theorem and the final declarations for Example 6.1 and Theorem 6.2 depend only on `propext`, `Classical.choice`, and `Quot.sound`. [Reproduction and axiom checks](formalization/REPRODUCE.md)
 
 ## Citation
 
-Xiang Ji and Wensheng Yu, *The Exact Stabilizability Threshold for the Belgian Chocolate Problem*, manuscript, 2026. When citing the Lean formalization, include the repository commit you used.
+Xiang Ji, Long Wang, and Wensheng Yu, *The Exact Stabilizability Threshold for the Belgian Chocolate Problem*, manuscript, 2026. When citing the Lean formalization, include the repository commit you used.

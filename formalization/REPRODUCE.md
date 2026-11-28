@@ -1,4 +1,4 @@
-# Reproduce the Lean proof
+# Reproduce the Lean proofs
 
 Install [Elan](https://github.com/leanprover/elan) and Git. From the repository root, run
 
@@ -6,9 +6,12 @@ Install [Elan](https://github.com/leanprover/elan) and Git. From the repository 
 cd formalization
 lake build
 lake env lean -DwarningAsError=true BelgianChocolateThresholdAudit.lean
+lake env lean -DwarningAsError=true Conjecture2.lean
+lake env lean -DwarningAsError=true ContinuedFractionBound.lean
+lake env lean -DwarningAsError=true Conjecture3Equality.lean
 ```
 
-The first command run through Lake resolves the Lean toolchain and the dependencies from the pinned files. The Mathlib cache can shorten dependency builds. Run `lake exe cache get Mathlib` before `lake build` to use it.
+The default build includes the threshold and both fixed-degree results. The first command run through Lake resolves the Lean toolchain and the dependencies from the pinned files. The Mathlib cache can shorten dependency builds. Run `lake exe cache get Mathlib` before `lake build` to use it.
 
 | Dependency | Pinned version |
 | --- | --- |
@@ -20,7 +23,7 @@ The first command run through Lake resolves the Lean toolchain and the dependenc
 
 ## Expected audit
 
-The [audit file](BelgianChocolateThresholdAudit.lean) checks the type of `BelgianChocolate.belgian_chocolate_threshold` and lists the axioms used by 31 declarations. For the main theorem, the expected output is `[propext, Classical.choice, Quot.sound]`.
+The [audit file](BelgianChocolateThresholdAudit.lean) checks the type of `BelgianChocolate.belgian_chocolate_threshold` and lists the axioms used by 31 declarations. The three fixed-degree files print the axioms of their final declarations. For the main theorem and the fixed-degree conclusions below, the expected output is `[propext, Classical.choice, Quot.sound]`.
 
 | Result | Lean statement |
 | --- | --- |
@@ -29,3 +32,6 @@ The [audit file](BelgianChocolateThresholdAudit.lean) checks the type of `Belgia
 | Global disk comparison | [`disk_threshold_of_certified_witness`](MarkedCompetitorComparison.lean#L236) |
 | Finite-order controller threshold | [`controller_threshold_of_candidate`](ControllerCandidateThreshold.lean#L115) |
 | Main theorem | [`BelgianChocolate.belgian_chocolate_threshold`](BelgianChocolateThreshold.lean#L89) |
+| Example 6.1 — refutation of the upper-bound transfer | [`conjecture2_false`](Conjecture2.lean#L377) · [`conjecture2_threshold_gap`](Conjecture2.lean#L363) |
+| Theorem 6.2 — continued-fraction root and upper bound | [`conjecture3_continued_fraction`](ContinuedFractionBound.lean#L73) |
+| Theorem 6.2 — when the upper bound is sharp | [`conjecture3_equality_iff`](Conjecture3Equality.lean#L8) |

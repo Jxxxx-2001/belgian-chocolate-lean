@@ -1,6 +1,6 @@
 name = "belgian_chocolate_formalization"
 version = "0.1.0"
-defaultTargets = ["MarkedBoundaryComparison", "FirstAnnulusMatrix", "FirstAnnulusEmbedding", "FirstAnnulusTransport", "FirstAnnulusStrip", "FirstAnnulusHomotopySupport", "FirstAnnulusPaths", "FirstAnnulusReferenceGates", "FirstAnnulusMonodromyLength", "FirstAnnulusOuterGates", "FirstAnnulusOuterAlgebra", "FirstAnnulusCoreWord", "FirstAnnulusCenterCore", "SimplePreimageLoop", "FirstAnnulusMarkedNormalization", "SecondAnnulusMarking", "ModularLambdaCuspMonodromy", "UpperHalfDiskPuncture", "MarkedCompetitorLift", "ComparisonSourceChart", "ComparisonOuterArc", "DiskFeasibility", "ControllerDiskCompetitor", "SlitRadialDomain", "SlitSquareRootBoundary", "MarkedAxisSlitBoundaryLimit", "SlitArcSquareRoot", "MarkedCompetitorComparison", "ControllerAnalyticUnits", "ControllerDiskApproximation", "MarkedBoundaryObstruction", "BelgianChocolateThreshold", "CandidateNormalizedChart", "SlitMassChartIndependence", "SlitMassPositivity", "SlitBoundaryMean", "CandidateBalancedUniqueness"]
+defaultTargets = ["MarkedBoundaryComparison", "FirstAnnulusMatrix", "FirstAnnulusEmbedding", "FirstAnnulusTransport", "FirstAnnulusStrip", "FirstAnnulusHomotopySupport", "FirstAnnulusPaths", "FirstAnnulusReferenceGates", "FirstAnnulusMonodromyLength", "FirstAnnulusOuterGates", "FirstAnnulusOuterAlgebra", "FirstAnnulusCoreWord", "FirstAnnulusCenterCore", "SimplePreimageLoop", "FirstAnnulusMarkedNormalization", "SecondAnnulusMarking", "ModularLambdaCuspMonodromy", "UpperHalfDiskPuncture", "MarkedCompetitorLift", "ComparisonSourceChart", "ComparisonOuterArc", "DiskFeasibility", "ControllerDiskCompetitor", "SlitRadialDomain", "SlitSquareRootBoundary", "MarkedAxisSlitBoundaryLimit", "SlitArcSquareRoot", "MarkedCompetitorComparison", "ControllerAnalyticUnits", "ControllerDiskApproximation", "MarkedBoundaryObstruction", "BelgianChocolateThreshold", "CandidateNormalizedChart", "SlitMassChartIndependence", "SlitMassPositivity", "SlitBoundaryMean", "CandidateBalancedUniqueness", "Conjecture2", "Conjecture3Equality"]
 
 [[require]]
 name = "mathlib"
@@ -598,4 +598,56 @@ leanOptions = { warningAsError = true }
 
 [[lean_lib]]
 name = "SlitParameterRegularity"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "HurwitzTools"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "Conjecture3"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "ContinuedFractionBound"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "BoundaryLimit"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "BoundaryExtraRoot"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "HighDegreeGap"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "LowDegreeHurwitz"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "PowerLoop"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "LowDegreeSharpness"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "Conjecture3Equality"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "SexticOddSign"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "Degree6Witness"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "Conjecture2"
 leanOptions = { warningAsError = true }
