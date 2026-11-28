@@ -52,17 +52,59 @@ Long Wang · 北京大学工学院系统与控制中心
 
 ## 证明路线
 
-**精确阈值。** 先用 Cayley 变换将原问题化为圆盘插值，再由唯一的平衡裂缝构造极值候选。两个显式环域确定竞争函数提升的边界标记。比较调和原函数得到阈值与圆盘端点分类。多项式逼近给出阈值以下的有限阶控制器，极值函数的边界行为排除阈值处的有限阶实现。
+### 定理 1.1：可镇定性阈值
+
+对于裂缝尖点 α，记 a(α)、b₀(α)、d(α) 分别为曲边 C、裂缝两岸的并、下半圆弧 L 在原点处的调和测度。定理给出唯一的平衡尖点 α<sub>∗</sub> ∈ (−1, 0)，并确定如下阈值公式。
+
+<p align="center">a(α<sub>∗</sub>) = b₀(α<sub>∗</sub>), &emsp; d<sub>∗</sub> = d(α<sub>∗</sub>), &emsp; δ<sub>∗</sub> = cos(πd<sub>∗</sub>/2).</p>
+
+可行正参数恰构成区间 (0, δ<sub>∗</sub>)。在参数范围 [0, 1] 上，可行集为 [0, δ<sub>∗</sub>)。因此 δ<sub>∗</sub> 是所有有限阶控制器可镇定参数的上确界，任何有限阶控制器都不能达到它。
+
+随裂缝增长，a 与 b₀ 连续并沿相反方向严格变化。两者之差改变符号，从而得到唯一平衡点。Cayley 变换把镇定问题与定理 2.1 的圆盘问题联系起来。多项式逼近给出阈值以下的控制器，极值插值函数的边界行为排除阈值处的有限阶实现。 [正参数区间的 Lean 定理](formalization/BelgianChocolateThreshold.lean#L89)
+
+### 定理 2.1：圆盘阈值与唯一性
+
+对于 0 &lt; t &lt; 1，相应的圆盘插值函数 f 在单位圆盘内全纯，并与复共轭可交换。0 和 1 的原像集合分别为
+
+<p align="center">f⁻¹({0}) = {0}, &emsp; f⁻¹({1}) = {it, −it},</p>
+
+且三处原像均为简单点。用定理 1.1 中相同的 d<sub>∗</sub>，阈值与参数换算为
+
+<p align="center">t<sub>∗</sub> = tan(πd<sub>∗</sub>/4), &emsp; δ = (1 − t²)/(1 + t²).</p>
+
+圆盘插值的可行参数恰构成 [t<sub>∗</sub>, 1)。当 t = t<sub>∗</sub> 时恰有两个解 f<sub>∗</sub>(z) 和 f<sub>∗</sub>(−z)，其中 f<sub>∗</sub>′(0) &gt; 0。
+
+由平衡裂缝构造候选函数 f<sub>∗</sub>，再用两个显式环域确定竞争函数提升的边界标记。比较调和原函数排除更小的 t，并证明正导数归一化下的唯一性。参数 δ<sub>w</sub> = 98236947/10⁸ 处的 28 阶控制器证书给出 t<sub>∗</sub> ≤ t<sub>w</sub> &lt; 1/10，使比较论证覆盖所有不超过 t<sub>∗</sub> 的正参数。 [Lean 圆盘比较](formalization/MarkedCompetitorComparison.lean#L236) · [见证的 Schur 验证](verification/README.md)
 
 <p align="center"><img src="assets/balanced-slit.png" width="660" alt="上半圆盘映到由曲边 C 与下半圆弧 L 围成的裂缝域，裂缝从 −1 延伸到 α∗，标记点 it∗ 映到原点。"></p>
 
-**图 1**　直径的两半与上半圆弧依次对应曲边 C、裂缝两岸和下半圆弧 L。达到平衡时，C 的调和测度等于裂缝两岸的调和测度之和。
+**图 1**　直径的两半与上半圆弧依次对应曲边 C、裂缝两岸和下半圆弧 L。标记点 it<sub>∗</sub> 映到原点。
 
-经验证的 28 阶有理控制器给出可行参数 δ<sub>w</sub> = 98236947/10⁸，对应的圆盘参数满足 t<sub>w</sub> &lt; 1/10。由比较论证得到 t<sub>∗</sub> ≤ t<sub>w</sub>，因此该论证覆盖所有不超过 t<sub>∗</sub> 的正参数。 [Lean 见证](formalization/ControllerFeasible.lean#L34) · [独立 Schur 验证](verification/README.md)
+### 例 6.1：六阶反例
 
-**例 6.1。** 利用六次 Hurwitz 多项式奇次系数的符号条件，排除达到该界及以上的常数分子情形。再用代数恒等式和 Möbius 变换构造严格稳定的六阶见证。 [Lean 见证构造](formalization/Degree6Witness.lean)
+在两个固定阶结果中，H<sup>i</sup> 表示 i 次实严格 Hurwitz 多项式的集合，MH<sup>n</sup> 表示 H<sup>n</sup> 中的首一多项式。记 S<sub>n,i</sub> 为满足 x ∈ MH<sup>n</sup>、y ∈ H<sup>i</sup> 且问题定义中的闭环多项式 Z 严格 Hurwitz 的正参数集，并记 δ<sub>n</sub><sup>∗</sup> = sup S<sub>n,0</sub>。
 
-**定理 6.2。** 利用 Chebyshev 多项式求连分式的最大正根。一至四阶构造严格稳定的多项式族逼近该界。五阶及以上则由极限多项式的额外开右半平面根排除逼近。 [低阶构造](formalization/LowDegreeSharpness.lean#L234) · [高阶障碍](formalization/HighDegreeGap.lean#L17)
+令 δ<sub>b</sub><sup>∗</sup> = √(11/12)。每个 δ ∈ S<sub>6,0</sub> 都严格小于 δ<sub>b</sub><sup>∗</sup>，而 S<sub>6,6</sub> 中存在大于 0.96295 的参数。特别地，
+
+<p align="center">δ<sub>6</sub><sup>∗</sup> ≤ δ<sub>b</sub><sup>∗</sup> &lt; 0.96295 &lt; sup S<sub>6,6</sub>.</p>
+
+这说明分母固定为六阶时，常数分子情形的上界在允许六阶分子后可能失效。证明利用六次 Hurwitz 多项式奇次系数的符号条件排除达到或超过该界的常数分子，再用代数恒等式和 Möbius 变换构造严格稳定的见证。 [Lean 反证](formalization/Conjecture2.lean#L377) · [上确界差距](formalization/Conjecture2.lean#L363)
+
+### 定理 6.2：连分式上界的尖锐性
+
+对 n ≥ 1，记 δ<sub>n</sub> 为有理函数 f<sub>n</sub> 的最大正实根，其中
+
+<p align="center">f₀(δ) = −δ, &emsp; f<sub>n</sub>(δ) = −1/f<sub>n−1</sub>(δ) − 2δ.</p>
+
+定理给出
+
+<p align="center">δ<sub>n</sub> = sin((n + 2)π/[2(n + 1)]) = cos(π/[2(n + 1)]), &emsp; δ<sub>n</sub><sup>∗</sup> ≤ δ<sub>n</sub>,</p>
+
+<p align="center">δ<sub>n</sub><sup>∗</sup> = δ<sub>n</sub>（1 ≤ n ≤ 4），&emsp; δ<sub>n</sub><sup>∗</sup> &lt; δ<sub>n</sub>（n ≥ 5）。</p>
+
+每个 δ ∈ S<sub>n,0</sub> 都严格小于 δ<sub>n</sub>。分子为常数时，一至四阶的可行参数可以任意逼近该界。对五阶及以上的每个固定阶数，可行参数的上确界与该界有严格差距。
+
+利用 Chebyshev 多项式把连分式化为 f<sub>n</sub>(δ) = −T<sub>n+1</sub>(δ)/T<sub>n</sub>(δ)。低阶用闭环族 Z(s) = (s + ε)<sup>n+2</sup> 构造严格可行的逼近序列。高阶若能逼近该界，极限多项式会出现额外的开右半平面根，由根的连续性与逼近序列的严格 Hurwitz 性矛盾。 [Lean 连分式上界](formalization/ContinuedFractionBound.lean#L73) · [等号分类](formalization/Conjecture3Equality.lean#L8)
 
 ## Lean 4 形式化
 

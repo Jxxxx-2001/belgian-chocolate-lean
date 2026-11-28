@@ -52,17 +52,59 @@ The numerical approximation δ<sub>∗</sub> ≈ 0.987237027 comes from Muhan Li
 
 ## Proof outline
 
-**Exact threshold.** The Cayley transform reduces stabilization to disk interpolation. The unique balanced slit gives an extremal candidate, and two explicit annuli determine the boundary markings of the competing lifts. A comparison of harmonic primitives proves the disk threshold and endpoint classification. Polynomial approximation gives finite-order controllers below the threshold, and the extremal interpolant's boundary behavior excludes a finite-order controller at the threshold.
+### Theorem 1.1 — Stabilizability threshold
+
+For a slit tip α, let a(α), b₀(α), and d(α) be the harmonic measures at 0 of the curved arc C, the two slit banks combined, and the lower semicircle L, respectively. The theorem gives a unique balanced tip α<sub>∗</sub> ∈ (−1, 0) and the formula
+
+<p align="center">a(α<sub>∗</sub>) = b₀(α<sub>∗</sub>), &emsp; d<sub>∗</sub> = d(α<sub>∗</sub>), &emsp; δ<sub>∗</sub> = cos(πd<sub>∗</sub>/2).</p>
+
+The feasible positive parameters are exactly (0, δ<sub>∗</sub>). For parameters in [0, 1], the feasible set is [0, δ<sub>∗</sub>). Thus δ<sub>∗</sub> is the supremum over all finite controller orders and cannot be attained by any finite-order controller.
+
+The two harmonic measures a and b₀ vary continuously and strictly in opposite directions as the slit grows. Their difference changes sign, giving the unique balance. The Cayley transform relates controller feasibility to the disk problem in Theorem 2.1. Polynomial approximation gives controllers below the threshold, and the boundary behavior of the extremal interpolant rules out finite-order attainment. [Lean threshold theorem for positive parameters](formalization/BelgianChocolateThreshold.lean#L89)
+
+### Theorem 2.1 — Disk threshold and uniqueness
+
+For 0 &lt; t &lt; 1, a disk interpolant at t is holomorphic on the unit disk and commutes with complex conjugation. Its preimages of 0 and 1 are prescribed by
+
+<p align="center">f⁻¹({0}) = {0}, &emsp; f⁻¹({1}) = {it, −it},</p>
+
+and all three preimages are simple. With the same d<sub>∗</sub> as in Theorem 1.1, the change of parameters is
+
+<p align="center">t<sub>∗</sub> = tan(πd<sub>∗</sub>/4), &emsp; δ = (1 − t²)/(1 + t²).</p>
+
+The feasible disk parameters are exactly [t<sub>∗</sub>, 1). At t = t<sub>∗</sub> there are exactly two interpolants, f<sub>∗</sub>(z) and f<sub>∗</sub>(−z), with f<sub>∗</sub>′(0) &gt; 0.
+
+The balanced slit gives the candidate f<sub>∗</sub>. Two explicit annuli determine the boundary markings of competing lifts. Comparing harmonic primitives excludes smaller t and proves uniqueness with the positive-derivative normalization. A certified degree-28 controller at δ<sub>w</sub> = 98236947/10⁸ gives t<sub>∗</sub> ≤ t<sub>w</sub> &lt; 1/10, so the comparison covers every positive parameter up to t<sub>∗</sub>. [Lean disk comparison](formalization/MarkedCompetitorComparison.lean#L236) · [Schur verification of the witness](verification/README.md)
 
 <p align="center"><img src="assets/balanced-slit.png" width="660" alt="The upper half-disk maps to a domain bounded by the curved arc C and the lower semicircle L, with a slit from −1 to α∗. The marked point it∗ maps to 0."></p>
 
-**Figure 1.** The two halves of the diameter and the upper semicircle correspond to C, the two slit banks, and L, respectively. At balance, C and the two banks have the same total harmonic measure at 0.
+**Figure 1.** The two halves of the diameter and the upper semicircle map to C, the two slit banks, and L, respectively. The map sends it<sub>∗</sub> to 0.
 
-A certified degree-28 rational controller gives feasibility at δ<sub>w</sub> = 98236947/10⁸. Its associated disk parameter satisfies t<sub>w</sub> &lt; 1/10. The comparison argument gives t<sub>∗</sub> ≤ t<sub>w</sub>, so it covers every positive parameter up to t<sub>∗</sub>. [Lean witness](formalization/ControllerFeasible.lean#L34) · [Independent Schur verification](verification/README.md)
+### Example 6.1 — A sixth-order counterexample
 
-**Example 6.1.** A sign condition for the odd coefficients of a Hurwitz sextic excludes constant numerators at and above the stated bound. An algebraic identity and a Möbius transformation produce a strictly stable degree-six witness. [Lean witness construction](formalization/Degree6Witness.lean)
+For the fixed-degree results, H<sup>i</sup> is the set of real strictly Hurwitz polynomials of degree i, and MH<sup>n</sup> is the subset of H<sup>n</sup> consisting of monic polynomials. Let S<sub>n,i</sub> be the positive parameters feasible with x ∈ MH<sup>n</sup>, y ∈ H<sup>i</sup>, and strictly Hurwitz closed-loop polynomial Z from the problem statement. Write δ<sub>n</sub><sup>∗</sup> = sup S<sub>n,0</sub>.
 
-**Theorem 6.2.** Chebyshev polynomials give the largest positive root of the continued fraction. At degrees one through four, explicit stable families approach the bound. At higher degrees, the limiting polynomial forces an extra right-half-plane root, ruling out approach to the bound. [Low-degree construction](formalization/LowDegreeSharpness.lean#L234) · [Higher-degree obstruction](formalization/HighDegreeGap.lean#L17)
+Put δ<sub>b</sub><sup>∗</sup> = √(11/12). Every δ ∈ S<sub>6,0</sub> is strictly below δ<sub>b</sub><sup>∗</sup>, while some δ ∈ S<sub>6,6</sub> exceeds 0.96295. In particular,
+
+<p align="center">δ<sub>6</sub><sup>∗</sup> ≤ δ<sub>b</sub><sup>∗</sup> &lt; 0.96295 &lt; sup S<sub>6,6</sub>.</p>
+
+So a bound valid for constant numerators can fail when the numerator degree is raised to six with the denominator degree fixed. The proof uses a sign condition on the odd coefficients of a Hurwitz sextic to rule out constant numerators at and above the bound. An algebraic identity and a Möbius transformation give the strictly stable witness. [Lean refutation](formalization/Conjecture2.lean#L377) · [Threshold gap](formalization/Conjecture2.lean#L363)
+
+### Theorem 6.2 — Sharpness of the continued-fraction bound
+
+For n ≥ 1, let δ<sub>n</sub> be the largest positive real zero of the rational function f<sub>n</sub> defined by
+
+<p align="center">f₀(δ) = −δ, &emsp; f<sub>n</sub>(δ) = −1/f<sub>n−1</sub>(δ) − 2δ.</p>
+
+The theorem gives
+
+<p align="center">δ<sub>n</sub> = sin((n + 2)π/[2(n + 1)]) = cos(π/[2(n + 1)]), &emsp; δ<sub>n</sub><sup>∗</sup> ≤ δ<sub>n</sub>,</p>
+
+<p align="center">δ<sub>n</sub><sup>∗</sup> = δ<sub>n</sub> for 1 ≤ n ≤ 4, &emsp; δ<sub>n</sub><sup>∗</sup> &lt; δ<sub>n</sub> for n ≥ 5.</p>
+
+Every δ ∈ S<sub>n,0</sub> is strictly below δ<sub>n</sub>. With a constant numerator, the bound can be approached arbitrarily closely at denominator degrees one through four. At each fixed degree five or higher, the feasible supremum stays strictly below the bound.
+
+Chebyshev polynomials give f<sub>n</sub>(δ) = −T<sub>n+1</sub>(δ)/T<sub>n</sub>(δ). At low degrees, the closed-loop family Z(s) = (s + ε)<sup>n+2</sup> gives strictly feasible parameters approaching the bound. At higher degrees, approaching the bound would force an extra right-half-plane root in the limiting polynomial, contradicting strict Hurwitz stability along the approximating sequence. [Lean continued-fraction bound](formalization/ContinuedFractionBound.lean#L73) · [Equality classification](formalization/Conjecture3Equality.lean#L8)
 
 ## Lean 4 formalization
 
